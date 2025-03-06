@@ -10,20 +10,20 @@ import javax.swing.plaf.synth.SynthStyle;
 public class VehicleDiagnostics implements Runnable {
     @Override
     public void run() {
-        try
-        {
-            readDTC();
-            checkVehicleHealth();
-            maintenanceReminder();
-        }
-        catch (IOException e)
-        {
-            System.err.println("Error reading or writing files: " + e.getMessage());
-        }
-        catch (Exception e)
-        {
-            System.err.println("Unexpected error: " +  e.getMessage());
-        }
+        // try
+        // {
+        //     readDTC();
+        //     checkVehicleHealth();
+        //     maintenanceReminder();
+        // }
+        // catch (IOException e)
+        // {
+        //     System.err.println("Error reading or writing files: " + e.getMessage());
+        // }
+        // catch (Exception e)
+        // {
+        //     System.err.println("Unexpected error: " +  e.getMessage());
+        // }
 
     }
 
@@ -37,7 +37,7 @@ public class VehicleDiagnostics implements Runnable {
     }
 
     private void logDTC(String dtc) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("dtc_log.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./IO/dtc_log.txt", true));
         writer.write("DTC: " + dtc + "\n");
         writer.close();
         System.out.println("DTC logged");
@@ -61,7 +61,7 @@ public class VehicleDiagnostics implements Runnable {
         tirePressure = readFile("./IO/tire_pressure.txt");
         oilPressure = readFile("./IO/oil_pressure.txt");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("vehicle_health.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./IO/vehicle_health.txt", true));
         writer.write("Engine Temp: " + engineTemp + "\n");
         writer.write("Tire Pressure: " + tirePressure + "\n");
         writer.write("Oil Level: " + oilPressure + "\n");

@@ -1,35 +1,34 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
 public class ConnectedCarApp implements Runnable {
     @Override
     public void run() {
-        remoteStart();
-        lockUnlockDoors();
-        vehicleStatus();
+        contactServer("remoteStart");
+        contactServer("lockUnlockDoors");
+        contactServer("vehicleStatus");
     }
 
-    public void remoteStart() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //System.out.println("Starting the car remotely...");
-    }
+    public void contactServer(String command)
+    {
+        try(Socket socket = new Socket("localhost", 12345))
+        {
+            OutputStreamWriter output = new OutputStreamWriter(socket.getOutputStream());
+            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-    public void lockUnlockDoors() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //System.out.println("Locking/unlocking doors remotely...");
-    }
+            // Send command to the server
+            output.write(command + "\n");
+            output.flush();
 
-    public void vehicleStatus() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
+            // Receive response from the server
+            String response = input.readLine();
+            System.out.println("Received from server: " + response);
+        }
+        catch(Exception e)
+        {
             e.printStackTrace();
         }
-        //System.out.println("Retrieving vehicle status...");
     }
 }
