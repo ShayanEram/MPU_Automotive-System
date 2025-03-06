@@ -63,7 +63,7 @@ public class TelematicsSystem implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //System.out.println("Performing remote diagnostics...");
+        System.out.println("Performing remote diagnostics...");
 
         VehicleDiagnostics vehicleDiagnostics = new VehicleDiagnostics();
         vehicleDiagnostics.run();
@@ -75,7 +75,7 @@ public class TelematicsSystem implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //System.out.println("Providing emergency assistance...");
+        System.out.println("Providing emergency assistance...");
     }
 
     private static LocationResponse parseJason(String json)
