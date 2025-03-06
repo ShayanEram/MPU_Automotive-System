@@ -11,9 +11,9 @@ import java.net.URL;
 public class TelematicsSystem implements Runnable {
     @Override
     public void run() {
-        trackVehicle();
-        remoteDiagnostics();
-        emergencyAssistance();
+        // trackVehicle();
+        // remoteDiagnostics();
+        // emergencyAssistance();
     }
 
     public void trackVehicle() {

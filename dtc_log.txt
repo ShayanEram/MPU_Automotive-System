@@ -1,0 +1,2 @@
+DTC: P0420 - Catalyst System Efficiency Below Threshold (Bank 1)
+DTC: P0420 - Catalyst System Efficiency Below Threshold (Bank 1)
