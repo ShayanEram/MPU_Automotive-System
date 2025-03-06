@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Enumeration;
+
 public class TelematicsSystem implements Runnable {
     @Override
     public void run() {
@@ -12,7 +16,7 @@ public class TelematicsSystem implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Tracking vehicle location...");
+        //System.out.println("Tracking vehicle location...");
     }
 
     public void remoteDiagnostics() {
@@ -21,7 +25,7 @@ public class TelematicsSystem implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Performing remote diagnostics...");
+        //System.out.println("Performing remote diagnostics...");
     }
 
     public void emergencyAssistance() {
@@ -30,6 +34,6 @@ public class TelematicsSystem implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Providing emergency assistance...");
+        //System.out.println("Providing emergency assistance...");
     }
 }

@@ -1,7 +1,10 @@
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
+import java.io.BufferedReader;
 
 public class InVehicleInfotainment implements Runnable {
     @Override
@@ -11,7 +14,7 @@ public class InVehicleInfotainment implements Runnable {
         connectSmartphone();
     }
 
-    private final String filePath = "./Ressources/music.wav";
+    private final String filePath = "./IO/music.wav";
     private Clip clip;
     public void playMusic() {
         try {
@@ -44,28 +47,26 @@ public class InVehicleInfotainment implements Runnable {
             e.printStackTrace();
         }
         System.out.println("Starting navigation...");
-        String[] directions = {
-            "Head north on Main St",
-            "Turn right onto 1st Ave",
-            "Continue straight for 3 miles",
-            "Turn left onto Elm St",
-            "Your destination is on the right"
-        };
-        int[] distances = {50, 40, 30, 20, 10, 0};
-        try {
-            for (int i = 0; i < directions.length; i++) {
-                System.out.println(directions[i]);
-                System.out.println("Distance to destination: " + distances[i] + " miles");
+        readFromGPS();
+    }
 
-                // Simulate time taken to reach the next direction
-                TimeUnit.SECONDS.sleep(2);
+    private final String gps = "./IO/navigation_instructions.txt";
+    private void readFromGPS()
+    {
+        try(BufferedReader reader = new BufferedReader(new FileReader(gps)))
+        {
+            String line;
+            while((line = reader.readLine()) != null)
+            {
+                System.out.println(line);
+                TimeUnit.SECONDS.sleep(1);
             }
-            System.out.println("Arrived at destination!");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
+    private final String smartphoneConnection = "./IO/smartphone_connection.txt";
     public void connectSmartphone() {
         try {
             Thread.sleep(2000);
@@ -73,5 +74,21 @@ public class InVehicleInfotainment implements Runnable {
             e.printStackTrace();
         }
         System.out.println("Connecting to smartphone...");
+        readPhoneConnection();
+
+    }
+
+    private void readPhoneConnection()
+    {
+        try(BufferedReader reader = new BufferedReader(new FileReader(smartphoneConnection)))
+        {
+            String line;
+            while((line = reader.readLine()) != null)
+            {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

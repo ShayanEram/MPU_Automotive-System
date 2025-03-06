@@ -1,0 +1,12 @@
+Head north on Main St
+Distance to destination: 50 miles
+Turn right onto 1st Ave
+Distance to destination: 40 miles
+Continue straight for 3 miles
+Distance to destination: 30 miles
+Turn left onto Elm St
+Distance to destination: 20 miles
+Your destination is on the right
+Distance to destination: 10 miles
+Arrived at destination!
+Distance to destination: 0 miles

@@ -12,7 +12,7 @@ public class AdvancedDriverAssistance implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Lane departure warning activated...");
+        //System.out.println("Lane departure warning activated...");
     }
 
     public void adaptiveCruiseControl() {
@@ -21,7 +21,7 @@ public class AdvancedDriverAssistance implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Adaptive cruise control activated...");
+        //System.out.println("Adaptive cruise control activated...");
     }
 
     public void collisionAvoidance() {
@@ -30,6 +30,6 @@ public class AdvancedDriverAssistance implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Collision avoidance system activated...");
+        //System.out.println("Collision avoidance system activated...");
     }
 }

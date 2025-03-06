@@ -12,7 +12,7 @@ public class ConnectedCarApp implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Starting the car remotely...");
+        //System.out.println("Starting the car remotely...");
     }
 
     public void lockUnlockDoors() {
@@ -21,7 +21,7 @@ public class ConnectedCarApp implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Locking/unlocking doors remotely...");
+        //System.out.println("Locking/unlocking doors remotely...");
     }
 
     public void vehicleStatus() {
@@ -30,6 +30,6 @@ public class ConnectedCarApp implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Retrieving vehicle status...");
+        //System.out.println("Retrieving vehicle status...");
     }
 }
