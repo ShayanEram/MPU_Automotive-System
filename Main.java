@@ -7,34 +7,31 @@ public class Main {
         AdvancedDriverAssistance ada = new AdvancedDriverAssistance();
         ConnectedCarApp cca = new ConnectedCarApp();
 
-        // Demonstrate functionality
-        System.out.println("In-Vehicle Infotainment System:");
-        ivs.playMusic();
-        ivs.showNavigation();
-        ivs.connectSmartphone();
-        System.out.println();
+        // Create threads for each module
+        Thread ivsThread = new Thread(ivs);
+        Thread tsThread = new Thread(ts);
+        Thread vdThread = new Thread(vd);
+        Thread adaThread = new Thread(ada);
+        Thread ccaThread = new Thread(cca);
 
-        System.out.println("Telematics System:");
-        ts.trackVehicle();
-        ts.remoteDiagnostics();
-        ts.emergencyAssistance();
-        System.out.println();
+        // Start all threads
+        ivsThread.start();
+        tsThread.start();
+        vdThread.start();
+        adaThread.start();
+        ccaThread.start();
 
-        System.out.println("Vehicle Diagnostics:");
-        vd.readDTC();
-        vd.checkVehicleHealth();
-        vd.maintenanceReminder();
-        System.out.println();
+        // Wait for all threads to finish
+        try {
+            ivsThread.join();
+            tsThread.join();
+            vdThread.join();
+            adaThread.join();
+            ccaThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        System.out.println("Advanced Driver Assistance Systems (ADAS):");
-        ada.laneDepartureWarning();
-        ada.adaptiveCruiseControl();
-        ada.collisionAvoidance();
-        System.out.println();
-
-        System.out.println("Connected Car Application:");
-        cca.remoteStart();
-        cca.lockUnlockDoors();
-        cca.vehicleStatus();
+        System.out.println("All modules have finished running.");
     }
 }

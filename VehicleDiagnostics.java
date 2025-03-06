@@ -1,4 +1,11 @@
-public class VehicleDiagnostics {
+public class VehicleDiagnostics implements Runnable {
+    @Override
+    public void run() {
+        readDTC();
+        checkVehicleHealth();
+        maintenanceReminder();
+    }
+
     public void readDTC() {
         // Simulated reading of diagnostic trouble codes (DTCs)
         System.out.println("Reading Diagnostic Trouble Codes (DTCs)...");
