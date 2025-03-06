@@ -2,20 +2,22 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 import java.io.BufferedReader;
 
 public class InVehicleInfotainment implements Runnable {
+    private final String filePath = "./IO/music.wav";
+    private final String gps = "./IO/navigation_instructions.txt";
+    private final String smartphoneConnection = "./IO/smartphone_connection.txt";
+    private Clip clip;
+    
     @Override
     public void run() {
-        // playMusic();
-        // showNavigation();
-        // connectSmartphone();
+        playMusic();
+        showNavigation();
+        connectSmartphone();
     }
 
-    private final String filePath = "./IO/music.wav";
-    private Clip clip;
     public void playMusic() {
         try {
             Thread.sleep(2000);
@@ -50,7 +52,7 @@ public class InVehicleInfotainment implements Runnable {
         readFromGPS();
     }
 
-    private final String gps = "./IO/navigation_instructions.txt";
+    
     private void readFromGPS()
     {
         try(BufferedReader reader = new BufferedReader(new FileReader(gps)))
@@ -66,7 +68,7 @@ public class InVehicleInfotainment implements Runnable {
         }
     }
 
-    private final String smartphoneConnection = "./IO/smartphone_connection.txt";
+    
     public void connectSmartphone() {
         try {
             Thread.sleep(2000);

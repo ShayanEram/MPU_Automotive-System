@@ -1,19 +1,17 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Enumeration;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class TelematicsSystem implements Runnable {
+    private static final String apiUrl = "http://ip-api.com/json/";
+    private static final String ipAddress = "24.48.0.1";
+    
     @Override
     public void run() {
-        // trackVehicle();
-        // remoteDiagnostics();
-        // emergencyAssistance();
+        trackVehicle();
+        remoteDiagnostics();
+        emergencyAssistance();
     }
 
     public void trackVehicle() {
@@ -27,8 +25,6 @@ public class TelematicsSystem implements Runnable {
         System.out.println(locationResponse);
     }
 
-    private static final String apiUrl = "http://ip-api.com/json/";
-    private static final String ipAddress = "24.48.0.1";
     private static LocationResponse getVehicleLocation() {
         LocationResponse locationResponse = new LocationResponse();
         try

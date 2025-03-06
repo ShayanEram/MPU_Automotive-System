@@ -4,14 +4,14 @@ public class Main {
         InVehicleInfotainment ivs = new InVehicleInfotainment();
         TelematicsSystem ts = new TelematicsSystem();
         VehicleDiagnostics vd = new VehicleDiagnostics();
-        AdvancedDriverAssistance ada = new AdvancedDriverAssistance();
+        VehicleDataBase vdb = new VehicleDataBase();
         ConnectedCarApp cca = new ConnectedCarApp();
 
         // Create threads for each module
         Thread ivsThread = new Thread(ivs);
         Thread tsThread = new Thread(ts);
         Thread vdThread = new Thread(vd);
-        Thread adaThread = new Thread(ada);
+        Thread adaThread = new Thread(vdb);
         Thread ccaThread = new Thread(cca);
 
         // Start all threads

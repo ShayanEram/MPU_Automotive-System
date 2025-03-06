@@ -3,31 +3,31 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.plaf.synth.SynthStyle;
 
 public class VehicleDiagnostics implements Runnable {
+    private final String dtcFile = "./IO/dtc_codes.txt";
+    private String engineTemp;
+    private String oilPressure;
+    private String tirePressure;
+    
     @Override
     public void run() {
-        // try
-        // {
-        //     readDTC();
-        //     checkVehicleHealth();
-        //     maintenanceReminder();
-        // }
-        // catch (IOException e)
-        // {
-        //     System.err.println("Error reading or writing files: " + e.getMessage());
-        // }
-        // catch (Exception e)
-        // {
-        //     System.err.println("Unexpected error: " +  e.getMessage());
-        // }
-
+        try
+        {
+            readDTC();
+            checkVehicleHealth();
+            maintenanceReminder();
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error reading or writing files: " + e.getMessage());
+        }
+        catch (Exception e)
+        {
+            System.err.println("Unexpected error: " +  e.getMessage());
+        }
     }
 
-    private final String dtcFile = "./IO/dtc_codes.txt";
     public void readDTC() throws IOException{
         System.out.println("Reading Diagnostic Trouble Codes (DTCs)...");
         String dtc = readFile(dtcFile);
@@ -42,10 +42,6 @@ public class VehicleDiagnostics implements Runnable {
         writer.close();
         System.out.println("DTC logged");
     }
-
-    private String engineTemp;
-    private String oilPressure;
-    private String tirePressure;
 
     public void checkVehicleHealth() throws IOException {
         System.out.println("Checking vehicle health...");
