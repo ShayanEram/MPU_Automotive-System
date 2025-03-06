@@ -9,9 +9,9 @@ import java.io.BufferedReader;
 public class InVehicleInfotainment implements Runnable {
     @Override
     public void run() {
-        playMusic();
-        showNavigation();
-        connectSmartphone();
+        // playMusic();
+        // showNavigation();
+        // connectSmartphone();
     }
 
     private final String filePath = "./IO/music.wav";
